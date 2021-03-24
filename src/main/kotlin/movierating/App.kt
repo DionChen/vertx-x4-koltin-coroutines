@@ -126,17 +126,10 @@ class App : CoroutineVerticle() {
 
     // Put a movie
     suspend fun putMovie(ctx: RoutingContext) {
-        val id        = ctx.pathParam("id")
-        val title     = ctx.queryParam("title")[0]
-        val testparam = ctx.queryParams().toString().split("?")
-        val map = testparam.associate {
-            val (letf,right) = it.split("=")
-            letf.toUpperCase() to right.replace("\n","")
-        }
-        println(JsonObject(map as Map<String, Any>?).toString())
-
-        val query = JsonObject().put("_id", id)
-        val update =JsonObject(map as Map<String, Any>?).put("_id", id)
+        val id     = ctx.pathParam("id")
+        val title  = ctx.queryParam("title")[0]
+        val query  = JsonObject().put("_id", id)
+        val update = JsonObject().put("\$set", JsonObject().put("_id", id).put("TITLE", title))
         val row = client.findOneAndUpdate("MOVIE", query, update).await()
 
         if (row != null) {
