@@ -104,11 +104,15 @@ class App : CoroutineVerticle() {
     // Get the current rating of a movie
     suspend fun getRating(ctx: RoutingContext) {
         val id = ctx.pathParam("id")
-        val pipeline = JsonArray().add(JsonObject().put("\$match", JsonObject().put("MOVIE_ID", id)))
+        val pipeline = JsonArray()
+            .add(JsonObject().put(
+                "\$match",
+                JsonObject().put("MOVIE_ID", id)))
             .add(
                 JsonObject().put(
                     "\$group",
-                    JsonObject().put("_id", "avg").put("value_avg", JsonObject().put("\$avg", "\$VALUE"))
+                    JsonObject().put("_id", "avg").put("value_avg",
+                        JsonObject().put("\$avg", "\$VALUE"))
                 )
             )
         val labels = client.aggregate("RATING", pipeline).toChannel(vertx).iterator()
@@ -133,11 +137,11 @@ class App : CoroutineVerticle() {
         val row = client.findOneAndUpdate("MOVIE", query, update).await()
 
         if (row != null) {
-            println("Update suc")
+            println("Update success")
             ctx.response().setStatusCode(200).end()
         } else {
             client.insert("MOVIE",JsonObject().put("_id",id).put("TITLE",title)).await()
-            println("Create new")
+            println("Create a new one")
             ctx.response().setStatusCode(200).end()
         }
     }

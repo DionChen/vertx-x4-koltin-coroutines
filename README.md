@@ -17,14 +17,14 @@ By default it uses `localhost` as host. The port is set to `27017`.
 ***
 Run the main function from the IDE
 
-##Running as a far jar
+## Running as a far jar
 ***
 ```
 > mvn package
 > java -jar target/kotlin-coroutines-examples.jar
 ```
 
-##API
+## API
 ***
 The application exposes a REST API for getRating movies:
 
@@ -47,12 +47,12 @@ You can rate a movie
 You can update or create a movie
 
 ```
-> curl -X PUT http://localhost:8080/movie/starwars?title=Star Wars2
+> curl -X PUT http://localhost:8080/movie/starwars?title=StarWars2
 {"id":"starwars","title":"Star Wars"} -> {"id":"starwars","title":"Star Wars2"}
 ```
 
 ```
-> curl -X PUT http://localhost:8080/movie/avengers?title=Infinity War
+> curl -X PUT http://localhost:8080/movie/avengers?title=InfinityWar
 ```
 
 Finally, you can delete a movie
