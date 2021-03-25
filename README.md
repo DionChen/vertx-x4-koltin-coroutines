@@ -12,6 +12,7 @@ To run this example, you need a running Mongo instance. Once running, you can co
 ```
 
 By default it uses `localhost` as host. The port is set to `27017`.
+In this example ,it will create two collection. (MOVIE and RATING)
 
 ## Running from the IDE
 ***
@@ -48,7 +49,7 @@ You can update or create a movie
 
 ```
 > curl -X PUT http://localhost:8080/movie/starwars?title=StarWars2
-{"id":"starwars","title":"Star Wars"} -> {"id":"starwars","title":"Star Wars2"}
+{"id":"starwars","title":"Star Wars"} -> {"id":"starwars","title":"StarWars2"}
 ```
 
 ```
