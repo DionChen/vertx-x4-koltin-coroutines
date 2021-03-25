@@ -24,7 +24,7 @@ class App : CoroutineVerticle() {
 
         client = createShared(
             vertx,
-            JsonObject().put("connection_string", "mongodb://localhost:27017").put("db_name", "test123"),
+            JsonObject().put("connection_string", "mongodb://localhost:27017").put("db_name", "corotineTest"),
             "mongodbPool"
         )
 
