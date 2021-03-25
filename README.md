@@ -1,5 +1,5 @@
 # Vert.x4 Kotlin Coroutines with Mongodb Example
-***
+
 A movie rating REST application written in Kotlin to demonstrate how it can Kotlin coroutines can be used with Vert.x.
 
 To run this example, you need a running Mongo instance. Once running, you can configure the verticles with the mongo host:
@@ -15,18 +15,18 @@ By default it uses `localhost` as host. The port is set to `27017`.
 In this example ,it will create two collection. (MOVIE and RATING)
 
 ## Running from the IDE
-***
+
 Run the main function from the IDE
 
 ## Running as a far jar
-***
+
 ```
 > mvn package
 > java -jar target/kotlin-coroutines-examples.jar
 ```
 
 ## API
-***
+
 The application exposes a REST API for getRating movies:
 
 You can know more about a movie
